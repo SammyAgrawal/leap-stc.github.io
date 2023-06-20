@@ -83,6 +83,19 @@ There are separate images for pytorch and tensorflow.
 You can install additional packages using `pip` and `conda`.
 However, these will disappear when your server shuts down.
 
+### Using git
+
+We **strongly** recommend using git (and [github]()) for sharing code with others. 
+
+To authenticate to github we recommend [gh-scoped-creds](https://github.com/jupyterhub/gh-scoped-creds). 
+Your server has this preinstalled, and all you have to do is open a terminal window and type
+```
+gh-scoped-creds
+```
+and follow the on-screen instructions (when you use this the first time you will have to give the app permissions to access your github account.
+
+You may also useob
+
 ### Files and Data
 
 Data and files work differently in the cloud. 
