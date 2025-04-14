@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/getting_started';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data Guide" href="../guides/data_guide.html" />
+    <link rel="next" title="Data Ingestion Tutorial" href="ingesting_dataset.html" />
     <link rel="prev" title="LEAP Technical Documentation" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -158,16 +158,9 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting Started</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../guides/data_guide.html">Data Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/compute_guide.html">Compute Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/education_guide.html">Education Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/bootcamp_guide.html">Bootcamp Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/vm_access.html">Getting access to Cloud VMs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/team_guide.html">Guide for Data and Computation Team Members</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/faq.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ingesting_dataset.html">Data Ingestion Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="education_guide.html">Teaching Classes (Education)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bootcamp_guide.html">Running Bootcamps</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul class="nav bd-sidenav">
@@ -176,6 +169,21 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../explanation/code_policy.html">LEAP-Pangeo Code Policy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/data_policy.html">LEAP-Pangeo Data Policy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/infrastructure_policy.html">LEAP-Pangeo Infrastructure Policy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../guides/code_guide.html">Code Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides/data_guide.html">Data Guide</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/transfer_data.html">Transfering Data into Cloud Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/data_catalog.html">Working with the LEAP Data Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/data_jupyterhub.html">Working with Cloud Data on the JupyterHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/external_workflow.html">Working outside the LEAP JupyterHub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/compute_guide.html">Compute Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/vm_access.html">Getting access to Cloud VMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/team_guide.html">Guide for Data and Computation Team Members</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/faq.html">FAQs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -408,7 +416,7 @@ document.write(`
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RKXWxtNqWKw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <section id="how-can-i-get-access-to-the-hub">
 <span id="hub-access"></span><h2>How can I get access to the Hub<a class="headerlink" href="#how-can-i-get-access-to-the-hub" title="Permalink to this headline">#</a></h2>
-<p>Only LEAP members will be able to access the hub. Please <a class="reference internal" href="../reference/membership.html#users-membership-apply"><span class="std std-ref">become a member</span></a> and make sure you accept the <a class="reference internal" href="../guides/faq.html#faq-where-is-my-invite"><span class="std std-ref">invitation on github</span></a> before proceeding</p>
+<p>Only LEAP members will be able to access the hub. The tier of access is directly determined by membership in the corresponding <a class="reference internal" href="../reference/membership.html#reference-membership-team-resources"><span class="std std-ref">Github Team</span></a>. Please <a class="reference internal" href="../reference/membership.html#users-membership-apply"><span class="std std-ref">become a member</span></a> and make sure you accept the <a class="reference internal" href="../guides/faq.html#faq-where-is-my-invite"><span class="std std-ref">invitation on github</span></a> before proceeding.</p>
 </section>
 <section id="hub-usage">
 <h2>Hub Usage<a class="headerlink" href="#hub-usage" title="Permalink to this headline">#</a></h2>
@@ -421,7 +429,7 @@ Feel free to <a class="reference external" href="https://github.com/leap-stc/lea
 <li><p>👀 Navigate to <a class="reference external" href="https://leap.2i2c.cloud/">https://leap.2i2c.cloud/</a> and click the big orange button that says “Log in to continue”</p></li>
 <li><p>🔐 You will be prompted to authorize a GitHub application. Say “yes” to everything.
 Note you must belong to the appropriate GitHub team in order to access the hub.
-See <a class="reference internal" href="../reference/membership.html#reference-membership-team-resources"><span class="std std-ref">Github Teams and Resources</span></a>  for more information.</p></li>
+See <a class="reference internal" href="../reference/membership.html#reference-membership-team-resources"><span class="std std-ref">Github Teams and Resources</span></a> for more information.</p></li>
 <li><p>📠 You will redirect to a screen with the following options.</p></li>
 </ol>
 <a class="reference internal image-reference" href="https://github.com/leap-stc/leap-stc.github.io/assets/14314623/088946a1-896f-4ff8-af91-8107c9f14cfd"><img alt="image" src="https://github.com/leap-stc/leap-stc.github.io/assets/14314623/088946a1-896f-4ff8-af91-8107c9f14cfd" style="width: 410px;" /></a>
@@ -515,11 +523,11 @@ To shut it down, go to <a class="reference external" href="https://leap.2i2c.clo
       </div>
     </a>
     <a class="right-next"
-       href="../guides/data_guide.html"
+       href="ingesting_dataset.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Guide</p>
+        <p class="prev-next-title">Data Ingestion Tutorial</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

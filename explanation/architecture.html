@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="LEAP-Pangeo Implementation Plan" href="implementation.html" />
-    <link rel="prev" title="FAQs" href="../guides/faq.html" />
+    <link rel="prev" title="Running Bootcamps" href="../tutorials/bootcamp_guide.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -158,16 +158,9 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/getting_started.html">Getting Started</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../guides/data_guide.html">Data Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/compute_guide.html">Compute Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/education_guide.html">Education Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/bootcamp_guide.html">Bootcamp Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/vm_access.html">Getting access to Cloud VMs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/team_guide.html">Guide for Data and Computation Team Members</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/faq.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ingesting_dataset.html">Data Ingestion Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/education_guide.html">Teaching Classes (Education)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/bootcamp_guide.html">Running Bootcamps</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul class="current nav bd-sidenav">
@@ -176,6 +169,21 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="code_policy.html">LEAP-Pangeo Code Policy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_policy.html">LEAP-Pangeo Data Policy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="infrastructure_policy.html">LEAP-Pangeo Infrastructure Policy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../guides/code_guide.html">Code Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides/data_guide.html">Data Guide</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/transfer_data.html">Transfering Data into Cloud Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/data_catalog.html">Working with the LEAP Data Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/data_jupyterhub.html">Working with Cloud Data on the JupyterHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/external_workflow.html">Working outside the LEAP JupyterHub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/compute_guide.html">Compute Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/vm_access.html">Getting access to Cloud VMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/team_guide.html">Guide for Data and Computation Team Members</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/faq.html">FAQs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -498,7 +506,7 @@ with the open-source development process around Pangeo Forge and related technol
 </section>
 </section>
 <section id="the-hub">
-<h3>The Hub<a class="headerlink" href="#the-hub" title="Permalink to this headline">#</a></h3>
+<span id="explanation-jupyterhub"></span><h3>The Hub<a class="headerlink" href="#the-hub" title="Permalink to this headline">#</a></h3>
 <figure class="align-default" id="jupyterlab-preview">
 <a class="reference internal image-reference" href="https://jupyter.org/assets/homepage/labpreview.webp"><img alt="https://jupyter.org/assets/homepage/labpreview.webp" src="https://jupyter.org/assets/homepage/labpreview.webp" style="width: 400px;" /></a>
 <figcaption>
@@ -559,7 +567,7 @@ information architecture and systems design.</p>
 <li><p><strong><a class="reference external" href="https://research.google.com/colaboratory/faq.html">Google Colab</a></strong> is a free notebook-in-the-cloud service run by Google.
 It is built around the open source Jupyter project, but with advanced notebook sharing capabilities (like Google Docs).</p></li>
 <li><p><strong><a class="reference external" href="https://earthengine.google.org/">Google Earth Engine</a></strong> is a reference point for all cloud geospatial analytics platforms.
-It’s actually a standalone application that is separate from Google Cloud, the single instance of a highly customized, black box (i.e. not open source)  application that enables parallel computing on distributed data.
+It’s actually a standalone application that is separate from Google Cloud, the single instance of a highly customized, black box (i.e. not open source) application that enables parallel computing on distributed data.
 It’s very good at what it was designed for (analyzing satellite images), but isn’t easily adapted to other applications, such as machine learning.</p></li>
 <li><p><strong><a class="reference external" href="https://iridl.ldeo.columbia.edu/index.html">Columbia IRI Data Library</a></strong> is a powerful and freely accessible online data repository and analysis tool that allows a user to view, analyze, and download hundreds of terabytes of climate-related data through a standard web browser.
 Due to its somewhat outdated architecture, IRI data library cannot easily be updated or adapted to new projects.</p></li>
@@ -614,12 +622,12 @@ foundations in the climate data science community, strong uptake within NCAR, an
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../guides/faq.html"
+       href="../tutorials/bootcamp_guide.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">FAQs</p>
+        <p class="prev-next-title">Running Bootcamps</p>
       </div>
     </a>
     <a class="right-next"

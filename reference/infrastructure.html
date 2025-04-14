@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Membership" href="membership.html" />
-    <link rel="prev" title="LEAP-Pangeo Infrastructure Policy" href="../explanation/infrastructure_policy.html" />
+    <link rel="prev" title="FAQs" href="../guides/faq.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -158,16 +158,9 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/getting_started.html">Getting Started</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../guides/data_guide.html">Data Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/compute_guide.html">Compute Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/education_guide.html">Education Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/bootcamp_guide.html">Bootcamp Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/vm_access.html">Getting access to Cloud VMs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/team_guide.html">Guide for Data and Computation Team Members</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/faq.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ingesting_dataset.html">Data Ingestion Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/education_guide.html">Teaching Classes (Education)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/bootcamp_guide.html">Running Bootcamps</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul class="nav bd-sidenav">
@@ -176,6 +169,21 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../explanation/code_policy.html">LEAP-Pangeo Code Policy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/data_policy.html">LEAP-Pangeo Data Policy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/infrastructure_policy.html">LEAP-Pangeo Infrastructure Policy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../guides/code_guide.html">Code Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides/data_guide.html">Data Guide</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/transfer_data.html">Transfering Data into Cloud Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/data_catalog.html">Working with the LEAP Data Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/data_jupyterhub.html">Working with Cloud Data on the JupyterHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/external_workflow.html">Working outside the LEAP JupyterHub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/compute_guide.html">Compute Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/vm_access.html">Getting access to Cloud VMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/team_guide.html">Guide for Data and Computation Team Members</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/faq.html">FAQs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
@@ -383,12 +391,23 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-pangeo-data-catalog">LEAP-Pangeo Data Catalog</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-pangeo-jupyterhub">LEAP-Pangeo JupyterHub</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#server">Server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#server">Server</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-servers">Managing Servers</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-user-directory">Your User Directory</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-software-environment">The Software Environment</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#preselected-images">Preselected Images</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-images">Custom Images</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-additonal-packages">Installing additonal packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-storage">Cloud Storage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#m2lines-osn-pod">m2lines OSN Pod</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#osn-pod-organization">OSN Pod Organization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#credentials">Credentials</a></li>
 </ul>
 </li>
 </ul>
@@ -439,7 +458,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>For more explanation about the catalog, and its role in the overall vision of LEAP, see <a class="reference internal" href="../explanation/architecture.html#explanation-architecture"><span class="std std-ref">LEAP-Pangeo Architecture</span></a>. See <a class="reference internal" href="../guides/data_guide.html#guides-data-ingestion"><span class="std std-ref">Ingesting Datasets into Cloud Storage</span></a> for details on how to ingest data and link it into the catalog.</p>
+<p>For more explanation about the catalog, and its role in the overall vision of LEAP, see <a class="reference internal" href="../explanation/architecture.html#explanation-architecture"><span class="std std-ref">LEAP-Pangeo Architecture</span></a>. See <a class="reference internal" href="../guides/data_guides/transfer_data.html#guides-data-ingestion"><span class="std std-ref">Ingesting Datasets into Cloud Storage</span></a> for details on how to ingest data and link it into the catalog.</p>
 </section>
 <section id="leap-pangeo-jupyterhub">
 <span id="reference-infrastructure-hub"></span><h2>LEAP-Pangeo JupyterHub<a class="headerlink" href="#leap-pangeo-jupyterhub" title="Permalink to this headline">#</a></h2>
@@ -473,7 +492,10 @@ For information who can access the hub with which privileges, please refer to <a
 </ul>
 <section id="server">
 <span id="reference-infrastructure-hub-server"></span><h3>Server<a class="headerlink" href="#server" title="Permalink to this headline">#</a></h3>
-<p>🚧</p>
+<section id="managing-servers">
+<h4>Managing Servers<a class="headerlink" href="#managing-servers" title="Permalink to this headline">#</a></h4>
+<p>You can start and stop your server (and even open multiple named servers) from the <code class="docutils literal notranslate"><span class="pre">Hub</span> <span class="pre">Control</span> <span class="pre">Panel</span></code>. You can get to the hub control panel by navigating to <code class="docutils literal notranslate"><span class="pre">https://leap.2i2c.cloud/hub/home</span></code> in your browser or navigating to <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Hub</span> <span class="pre">Control</span> <span class="pre">Panel</span></code> from the JupyterLab Interface.</p>
+</section>
 </section>
 <section id="your-user-directory">
 <span id="reference-infrastructure-hub-user-dir"></span><h3>Your User Directory<a class="headerlink" href="#your-user-directory" title="Permalink to this headline">#</a></h3>
@@ -485,7 +507,7 @@ For information who can access the hub with which privileges, please refer to <a
 </pre></div>
 </div>
 <p>The primary purpose of this directory is to store small files, like github repositories and other code.</p>
-<div class="highlight-\{warning} notranslate"><div class="highlight"><pre><span></span>To accommodate the expanding LEAP community, the data and compute team has instituted a storage quota on individual user directories `/home/jovyan`. Your home directory is intended only for notebooks, analysis scripts, and small datasets (\&lt; 1 GB). It is not an appropriate place to store large datasets. Unlike the cloud buckets, these directories use an underlying storage with a rigid limit. If a single user fills up the space, the Hub crashes for everyone. We recommend users use less than 25GB and enforce a hard limit of 50GB. **Users who persistently violate the limit may temporarily get reduced cloud access**.
+<div class="highlight-\{warning} notranslate"><div class="highlight"><pre><span></span>To accommodate the expanding LEAP community, the data and compute team has instituted a storage quota on individual user directories `/home/jovyan`. Your home directory is intended only for notebooks, analysis scripts, and small datasets (&lt; 1 GB). It is not an appropriate place to store large datasets. Unlike the cloud buckets, these directories use an underlying storage with a rigid limit. If a single user fills up the space, the Hub crashes for everyone. We recommend users use less than 25GB and enforce a hard limit of 50GB. **Users who persistently violate the limit may temporarily get reduced cloud access**.
 
 To check how much space you are using in your home directory open a terminal window on the hub and run `du -h --max-depth=1 ~/ | sort -h`.
 
@@ -534,10 +556,61 @@ You can then use that string with the [custom images](reference.infrastructure.h
 <p>If you want to build your own docker image for your project, take a look at <a class="reference external" href="https://github.com/2i2c-org/hub-user-image-template">this template</a> and the instructions to learn how to use <a class="reference external" href="https://github.com/jupyterhub/repo2docker">repo2docker</a> to set up CI workflows to automatically build docker images from your repository.</p>
 </section>
 <section id="installing-additonal-packages">
-<h4>Installing additonal packages<a class="headerlink" href="#installing-additonal-packages" title="Permalink to this headline">#</a></h4>
+<span id="reference-infrastructure-hub-software-env-temp-install"></span><h4>Installing additonal packages<a class="headerlink" href="#installing-additonal-packages" title="Permalink to this headline">#</a></h4>
 <p>You can install additional packages using <code class="docutils literal notranslate"><span class="pre">pip</span></code> and <code class="docutils literal notranslate"><span class="pre">conda</span></code>.
 However, these will disappear when your server shuts down.</p>
 <p>For a more permanent solution we recommend building project specific dockerfiles and using those as <a class="reference internal" href="#reference-infrastructure-hub-image-custom"><span class="std std-ref">custom images</span></a>.</p>
+</section>
+</section>
+</section>
+<section id="cloud-storage">
+<h2>Cloud Storage<a class="headerlink" href="#cloud-storage" title="Permalink to this headline">#</a></h2>
+<section id="m2lines-osn-pod">
+<span id="reference-infrastructrue-osn-pod"></span><h3>m2lines OSN Pod<a class="headerlink" href="#m2lines-osn-pod" title="Permalink to this headline">#</a></h3>
+<section id="osn-pod-organization">
+<span id="reference-infrastructrue-osn-pod-organization"></span><h4>OSN Pod Organization<a class="headerlink" href="#osn-pod-organization" title="Permalink to this headline">#</a></h4>
+<p>The ~1PB storage on the OSN Pod can be customized into Projects and Buckets. Projects are used to give additional users access to the Coldfront Admin Console, whereas buckets are how storage is administered up on the Pod. A project can have multiple buckets.</p>
+<p>There are currently 3 principal Projects on the Pod:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'leap-pangeo'</span></code>: Used for Data Ingestion across the m2lines and LEAP community</p>
+<ul>
+<li><p>Buckets:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'leap-pangeo-manual'</span></code>: <strong>No write access for users</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'leap-pangeo-pipeline'</span></code>: <strong>No write access for users</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'leap-pangeo-inbox'</span></code>: <em>Write access can be shared with users who want to add data e.g. from an HPC center</em></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'m2lines'</span></code>: Used for project data and publications from the m2lines project</p>
+<ul>
+<li><p>Buckets:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'m2lines-pubs'</span></code>: <strong>No write access for users</strong></p></li>
+<li><p>… various project buckets</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'leap'</span></code>: Used for project data and publications from the LEAP project</p>
+<ul>
+<li><p>Buckets:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'leap-pubs'</span></code>: <strong>No write access for users</strong></p></li>
+<li><p>… various project buckets</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="credentials">
+<span id="reference-infrastructrue-osn-pod-credentials"></span><h4>Credentials<a class="headerlink" href="#credentials" title="Permalink to this headline">#</a></h4>
+<div class="highlight-\{warning} notranslate"><div class="highlight"><pre><span></span>All OSN credentials are long lived and should be treated as such. Please do not share them publicly (e.g. in your notebook or a github repository) and when sharing with e.g. collaborators use an encrypted way of sharing (e.g. password manager).
+</pre></div>
+</div>
+<p>Credentials for the OSN Pod are specific to each bucket. There are two types of credentials: “Read-only” and “Read-Write”. Exercise caution when sharing/saving secrets, particularly the latter. Each type of credentials consists of two keys (access + secret). Both are required to access the bucket, and they are shared by the OSN Admin.</p>
 </section>
 </section>
 </section>
@@ -547,7 +620,7 @@ However, these will disappear when your server shuts down.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">gs://leap-scratch/</span></code> - Temporary Storage deleted after 7 days. Use this bucket for testing and storing large intermediate results. <a class="reference external" href="https://docs.2i2c.org/user/topics/data/cloud/#scratch-bucket">More info</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">gs://leap-persistent/</span></code> - Persistent Storage. Use this bucket for storing results you want to share with other members.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">gs://leap-persistent-ro/</span></code> - Persistent Storage with read-only access for most users. To upload data to this bucket you need to use <a class="reference internal" href="../guides/data_guide.html#hub-data-upload-hpc"><span class="std std-ref">this</span></a> method below.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gs://leap-persistent-ro/</span></code> - Persistent Storage with read-only access for most users. To upload data to this bucket you need to use <a class="reference internal" href="../guides/data_guides/transfer_data.html#hub-data-upload-hpc"><span class="std std-ref">this</span></a> method below.</p></li>
 </ul>
 <p>Files stored on each of those buckets can be accessed by any LEAP member, so be concious in the way you use these.</p>
 <ul class="simple">
@@ -631,12 +704,12 @@ However, these will disappear when your server shuts down.</p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../explanation/infrastructure_policy.html"
+       href="../guides/faq.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">LEAP-Pangeo Infrastructure Policy</p>
+        <p class="prev-next-title">FAQs</p>
       </div>
     </a>
     <a class="right-next"
@@ -668,12 +741,23 @@ However, these will disappear when your server shuts down.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-pangeo-data-catalog">LEAP-Pangeo Data Catalog</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-pangeo-jupyterhub">LEAP-Pangeo JupyterHub</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#server">Server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#server">Server</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-servers">Managing Servers</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-user-directory">Your User Directory</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-software-environment">The Software Environment</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#preselected-images">Preselected Images</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-images">Custom Images</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-additonal-packages">Installing additonal packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-storage">Cloud Storage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#m2lines-osn-pod">m2lines OSN Pod</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#osn-pod-organization">OSN Pod Organization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#credentials">Credentials</a></li>
 </ul>
 </li>
 </ul>

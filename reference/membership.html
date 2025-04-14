@@ -158,16 +158,9 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/getting_started.html">Getting Started</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../guides/data_guide.html">Data Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/compute_guide.html">Compute Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/education_guide.html">Education Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/bootcamp_guide.html">Bootcamp Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/vm_access.html">Getting access to Cloud VMs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/team_guide.html">Guide for Data and Computation Team Members</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/faq.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ingesting_dataset.html">Data Ingestion Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/education_guide.html">Teaching Classes (Education)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/bootcamp_guide.html">Running Bootcamps</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul class="nav bd-sidenav">
@@ -176,6 +169,21 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../explanation/code_policy.html">LEAP-Pangeo Code Policy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/data_policy.html">LEAP-Pangeo Data Policy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/infrastructure_policy.html">LEAP-Pangeo Infrastructure Policy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../guides/code_guide.html">Code Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../guides/data_guide.html">Data Guide</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/transfer_data.html">Transfering Data into Cloud Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/data_catalog.html">Working with the LEAP Data Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/data_jupyterhub.html">Working with Cloud Data on the JupyterHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/external_workflow.html">Working outside the LEAP JupyterHub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/compute_guide.html">Compute Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/vm_access.html">Getting access to Cloud VMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/team_guide.html">Guide for Data and Computation Team Members</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/faq.html">FAQs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
@@ -390,6 +398,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-for-membership">Applying for membership</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#termination-of-access">Termination of Access</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#offboarding-process">Offboarding Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#member-sign-up-procedure">Member Sign Up Procedure</a></li>
 </ul>
             </nav>
         </div>
@@ -412,8 +421,8 @@ document.write(`
 <span id="reference-membership-tiers"></span><h2>Membership Tiers<a class="headerlink" href="#membership-tiers" title="Permalink to this headline">#</a></h2>
 <p>The membership tiers are listed in ascending order of access/privileges.</p>
 <ul class="simple">
-<li><p><strong>PUBLIC MEMBERSHIP(Please note: Public Membership will be live soon.)</strong>  Receive weekly LEAP newsletter and invitations to LEAP events. Access to LEAP Pangeo that includes limited performance notebooks, read only access to all LEAP storage, and write access to our scratch bucket, where everything is deleted after 7 days.</p></li>
-<li><p><strong>EDUCATION MEMBERSHIP</strong>  Open to participants in LEAP Education programs (e.g., Bootcamp, academic courses, and summer programs). Receive weekly LEAP newsletter and invitations to LEAP events. Access to LEAP Pangeo compute and storage for duration of education program.</p></li>
+<li><p><strong>PUBLIC MEMBERSHIP(Please note: Public Membership will be live soon.)</strong> Receive weekly LEAP newsletter and invitations to LEAP events. Access to LEAP Pangeo that includes limited performance notebooks, read only access to all LEAP storage, and write access to our scratch bucket, where everything is deleted after 7 days.</p></li>
+<li><p><strong>EDUCATION MEMBERSHIP</strong> Open to participants in LEAP Education programs (e.g., Bootcamp, academic courses, and summer programs). Receive weekly LEAP newsletter and invitations to LEAP events. Access to LEAP Pangeo compute and storage for duration of education program.</p></li>
 <li><p><strong>RESEARCH MEMBERSHIP</strong> Open to researchers who have been referred by a LEAP scientist. Receive weekly LEAP newsletter and invitations to LEAP events. Access to LEAP Pangeo compute and storage for six (6) months (renewal applications may be submitted at the conclusion of six months).</p></li>
 <li><p><strong>LEAP-FUNDED RESEARCHE MEMBERSHIP</strong>. Open to researchers who receive LEAP funding. Receive weekly LEAP newsletter and invitations to LEAP events. Access to LEAP Pangeo compute and storage for duration of time with LEAP.</p></li>
 </ul>
@@ -480,6 +489,13 @@ Removing a user from the <code class="docutils literal notranslate"><span class=
 completely.
 An automated process will delete user data from the hub one month after a user
 is removed from the <code class="docutils literal notranslate"><span class="pre">leap-pangeo-users</span></code> group.</p>
+</section>
+<section id="member-sign-up-procedure">
+<span id="reference-member-sign-up"></span><h2>Member Sign Up Procedure<a class="headerlink" href="#member-sign-up-procedure" title="Permalink to this headline">#</a></h2>
+<p><img alt="" src="../_images/member_sign_up_schematic.png" /></p>
+<p>All data relevant to LEAP membership is centrally processed in a spreadsheet with access limited to LEAP staff. To allow LEAP members access to the JupyterHub (and the associated storage and compute resources; all managed by 2i2c) the <a class="reference internal" href="../support.html#support-data-compute-team"><span class="std std-ref">Data and Computation Team</span></a> maintains a set of <a class="reference external" href="https://github.com/leap-stc/member_management/actions/workflows/read_sheet.yaml">Github Actions</a>(the member management repository is private) that parse the relevant data like github usernames and membership expiration, and add users to the appropriate <a class="reference internal" href="#reference-membership-team-resources"><span class="std std-ref">teams</span></a>.
+For normal operations users should <a class="reference internal" href="#users-membership-apply"><span class="std std-ref">apply</span></a> and wait a few days until they are approved, entered, and signed up for access.
+For urgent situations (like events, classes) that require expedited sign up please refer to <a class="reference internal" href="../guides/team_guide.html#guide-team-admin-member-signup-troubleshooting"><span class="std std-ref">Member Sign Up Troubleshooting</span></a>.</p>
 </section>
 </section>
 
@@ -559,6 +575,7 @@ is removed from the <code class="docutils literal notranslate"><span class="pre"
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-for-membership">Applying for membership</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#termination-of-access">Termination of Access</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#offboarding-process">Offboarding Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#member-sign-up-procedure">Member Sign Up Procedure</a></li>
 </ul>
   </nav></div>
 

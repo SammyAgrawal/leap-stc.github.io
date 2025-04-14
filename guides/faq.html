@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'guides/faq';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="LEAP-Pangeo Architecture" href="../explanation/architecture.html" />
+    <link rel="next" title="Infrastructure" href="../reference/infrastructure.html" />
     <link rel="prev" title="Guide for Data and Computation Team Members" href="team_guide.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -158,16 +158,9 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/getting_started.html">Getting Started</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="data_guide.html">Data Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compute_guide.html">Compute Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="education_guide.html">Education Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bootcamp_guide.html">Bootcamp Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vm_access.html">Getting access to Cloud VMs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="team_guide.html">Guide for Data and Computation Team Members</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ingesting_dataset.html">Data Ingestion Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/education_guide.html">Teaching Classes (Education)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/bootcamp_guide.html">Running Bootcamps</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Explanation</span></p>
 <ul class="nav bd-sidenav">
@@ -176,6 +169,21 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../explanation/code_policy.html">LEAP-Pangeo Code Policy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/data_policy.html">LEAP-Pangeo Data Policy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../explanation/infrastructure_policy.html">LEAP-Pangeo Infrastructure Policy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="code_guide.html">Code Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="data_guide.html">Data Guide</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_guides/transfer_data.html">Transfering Data into Cloud Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_guides/data_catalog.html">Working with the LEAP Data Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_guides/data_jupyterhub.html">Working with Cloud Data on the JupyterHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_guides/external_workflow.html">Working outside the LEAP JupyterHub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="compute_guide.html">Compute Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vm_access.html">Getting access to Cloud VMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="team_guide.html">Guide for Data and Computation Team Members</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">FAQs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -414,21 +422,21 @@ document.write(`
 <section id="i-cannot-log-into-the-hub">
 <span id="faq-cannot-log-into-hub"></span><h2>I cannot log into the hub 😱<a class="headerlink" href="#i-cannot-log-into-the-hub" title="Permalink to this headline">#</a></h2>
 <p>If you are unable to log into the hub, please check the following steps:</p>
-<ul class="simple">
-<li><p>[ ] Check if you are member of the <a class="reference internal" href="../reference/membership.html#reference-membership-tiers"><span class="std std-ref">appropriate github teams</span></a>.</p></li>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Check if you are member of the <a class="reference internal" href="../reference/membership.html#reference-membership-tiers"><span class="std std-ref">appropriate github teams</span></a>.</p></li>
 </ul>
 <p>If you <strong>are not</strong> follow these steps:</p>
-<ul class="simple">
-<li><p>[ ] Did you <a class="reference internal" href="../reference/membership.html#users-membership-apply"><span class="std std-ref">sign up for LEAP membership</span></a>? This will be done for you if you sign up for an event like the Momentum bootcamp!</p></li>
-<li><p>[ ] Did you receive a github invite? <a class="reference internal" href="#faq-where-is-my-invite"><span class="std std-ref">Here</span></a> is how to check for that.</p></li>
-<li><p>[ ] Check again if they are part of the <a class="reference internal" href="../reference/membership.html#reference-membership-tiers"><span class="std std-ref">appropriate github teams</span></a>.</p></li>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Did you <a class="reference internal" href="../reference/membership.html#users-membership-apply"><span class="std std-ref">sign up for LEAP membership</span></a>? This will be done for you if you sign up for an event like the Momentum bootcamp!</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Did you receive a github invite? <a class="reference internal" href="#faq-where-is-my-invite"><span class="std std-ref">Here</span></a> is how to check for that.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Check again if they are part of the <a class="reference internal" href="../reference/membership.html#reference-membership-tiers"><span class="std std-ref">appropriate github teams</span></a>.</p></li>
 <li><p>If these steps do not work, please reach out to the <a class="reference internal" href="../support.html#support-data-compute-team"><span class="std std-ref">Data and Computation Team</span></a>.</p></li>
 </ul>
 <p>If you <strong>are</strong> member of one of the github teams, ask them to try the following steps:</p>
-<ul class="simple">
-<li><p>[ ] Refresh the browser cache</p></li>
-<li><p>[ ] Try a different browser</p></li>
-<li><p>[ ] Restart the computer</p></li>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Refresh the browser cache</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Try a different browser</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Restart the computer</p></li>
 <li><p>If these steps do not work, please reach out to the <a class="reference internal" href="../support.html#support-data-compute-team"><span class="std std-ref">Data and Computation Team</span></a>.</p></li>
 </ul>
 </section>
@@ -437,11 +445,11 @@ document.write(`
 <p>If you get a Hub Usage Alert email, this means you are violating the User Directory storage limit (to learn why this limit exists, see read about <a class="reference internal" href="../reference/infrastructure.html#reference-infrastructure-hub-user-dir"><span class="std std-ref">User Directories</span></a>). Remember that user directories are for scripts and notebooks not datasets! Users who persistently violate hub usage policies may temporarily get reduced cloud access.</p>
 <p><strong>Troubleshooting</strong></p>
 <ul class="simple">
-<li><p>To see which files and directories are taking up the bulk of your storage, run  <code class="docutils literal notranslate"><span class="pre">du</span> <span class="pre">-h</span> <span class="pre">--max-depth=1</span> <span class="pre">~/</span> <span class="pre">|</span> <span class="pre">sort</span> <span class="pre">-h</span></code>  in Terminal. It will likely reveal cached files and small/medium size data files that can be removed without disrupting typical usage.</p></li>
+<li><p>To see which files and directories are taking up the bulk of your storage, run <code class="docutils literal notranslate"><span class="pre">du</span> <span class="pre">-h</span> <span class="pre">--max-depth=1</span> <span class="pre">~/</span> <span class="pre">|</span> <span class="pre">sort</span> <span class="pre">-h</span></code> in Terminal. It will likely reveal cached files and small/medium size data files that can be removed without disrupting typical usage.</p></li>
 <li><p>Delete cached files, ipython checkpoints, and any other unwanted files.</p></li>
 <li><p>If you still require more storage, it is likely that you are storing downloaded data in your user directory. We recommend storing data in a LEAP <a class="reference external" href="https://leap-stc.github.io/leap-pangeo/jupyterhub.html#leap-pangeo-cloud-storage-buckets">cloud bucket</a> or data catalog. For more information, please consult our <a class="reference internal" href="data_guide.html#guide-data"><span class="std std-ref">Data Guide</span></a> and <a class="reference internal" href="../explanation/data_policy.html#explanation-data-policy"><span class="std std-ref">LEAP-Pangeo Data Policy</span></a>.</p></li>
 </ul>
-<p>Our goal is to accomodate all community members and thus we are happy to assist users in relocating data.  If you have any concerns, please reach out to the <a class="reference internal" href="../support.html#support-data-compute-team"><span class="std std-ref">Data and Computation Team</span></a>.</p>
+<p>Our goal is to accomodate all community members and thus we are happy to assist users in relocating data. If you have any concerns, please reach out to the <a class="reference internal" href="../support.html#support-data-compute-team"><span class="std std-ref">Data and Computation Team</span></a>.</p>
 </section>
 <section id="dask-killed-workers">
 <h2>Dask “Killed Workers”<a class="headerlink" href="#dask-killed-workers" title="Permalink to this headline">#</a></h2>
@@ -512,11 +520,11 @@ You can change the configuration of your dask workers and increase the memory ea
       </div>
     </a>
     <a class="right-next"
-       href="../explanation/architecture.html"
+       href="../reference/infrastructure.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">LEAP-Pangeo Architecture</p>
+        <p class="prev-next-title">Infrastructure</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
