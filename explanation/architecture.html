@@ -391,14 +391,9 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-principles">Design Principles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-and-architecture">Design and Architecture</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data-library">The Data Library</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-catalog">Data Catalog</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage-service">Data Storage Service</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pangeo-forge">Pangeo Forge</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data-catalog">The Data Catalog</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage-service">Data Storage Service</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pangeo-forge">Pangeo Forge</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hub">The Hub</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-knowledge-graph">The Knowledge Graph</a></li>
 </ul>
@@ -421,7 +416,7 @@ document.write(`
 <section id="design-principles">
 <h2>Design Principles<a class="headerlink" href="#design-principles" title="Permalink to this headline">#</a></h2>
 <p>In the proposal, we committed to building this in a way that enables the tools and infrastructure to be reused and remixed.
-So The challenge for LEAP Pangeo is to deploy an “enterprise quality” platform built entirely out of open-source tools, and to make this platform as reusable and useful for the broader climate science community as possible.
+So the challenge for LEAP Pangeo is to deploy an “enterprise quality” platform built entirely out of open-source tools, and to make this platform as reusable and useful for the broader climate science community as possible.
 We committed to following the following design principles:</p>
 <ul class="simple">
 <li><p>Open source</p></li>
@@ -441,11 +436,17 @@ This is a key part of our sustainability plan.</p></li>
 <p><span class="caption-number">Fig. 1 </span><span class="caption-text">LEAP-Pangeo high-level architecture diagram</span><a class="headerlink" href="#architecture-diagram" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>There are four primary components to LEAP-Pangeo.</p>
-<section id="the-data-library">
-<span id="explanation-architecture-data-library"></span><h3>The Data Library<a class="headerlink" href="#the-data-library" title="Permalink to this headline">#</a></h3>
+<p>There are four primary components to LEAP-Pangeo:</p>
+<figure class="align-default" id="architecture-components">
+<img alt="../_images/architecture.png" src="../_images/architecture.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">LEAP-Pangeo consists of the data catalog, a storage service, a compute environment, and a Knowledge Graph.</span><a class="headerlink" href="#architecture-components" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="the-data-catalog">
+<span id="explanation-architecture-catalog"></span><h3>The Data Catalog<a class="headerlink" href="#the-data-catalog" title="Permalink to this headline">#</a></h3>
 <p>The data library will provide analysis-ready, cloud-optimized data for all aspects of LEAP.
-The data library is directly inspired by the <a class="reference external" href="https://iridl.ldeo.columbia.edu">IRI Data Library</a> mentioned above; however, LEAP-Pangeo data will be hosted in the cloud, for maximum impact, accessibility, and interoperability.</p>
+The library is directly inspired by the <a class="reference external" href="https://iridl.ldeo.columbia.edu">IRI Data Library</a> mentioned above; however, LEAP-Pangeo data will be hosted in the cloud, for maximum impact, accessibility, and interoperability.</p>
 <p>The contents of the data library will evolve dynamically based on the needs of the project.
 Examples of data that may become part of the library are</p>
 <ul class="simple">
@@ -458,8 +459,6 @@ by ML researchers into climate science.</p></li>
 <li><p>Easily accessible syntheses of climate projections from <a class="reference external" href="https://esgf-node.llnl.gov/projects/cmip6/">CMIP6 data</a>, produced by the LEAP team,
 for use by industry partners for business strategy and decision making.</p></li>
 </ul>
-<section id="data-catalog">
-<span id="explanation-architecture-catalog"></span><h4>Data Catalog<a class="headerlink" href="#data-catalog" title="Permalink to this headline">#</a></h4>
 <p>A <a class="reference external" href="https://stacspec.org/">STAC</a> data catalog be used to enumerate all LEAP-Pangeo datasets and provide this information to the public.
 The catalog will store all relevant metadata about LEAP datasets following established metadata standards (e.g. CF Conventions).
 It will also provide direct links to raw data in cloud object storage.</p>
@@ -471,7 +470,6 @@ It will also provide direct links to raw data in cloud object storage.</p>
 </ul>
 <p>The <a class="reference external" href="https://mlhub.earth/">Radiant Earth MLHub</a> is a great reference for how we imagine the LEAP data catalog will eventually look.</p>
 </section>
-</section>
 <section id="data-storage-service">
 <h3>Data Storage Service<a class="headerlink" href="#data-storage-service" title="Permalink to this headline">#</a></h3>
 <p>The underlying technology for the LEAP Data catalog will be cloud object storage (e.g. Amazon S3),
@@ -481,12 +479,13 @@ Cloud Object Storage is the most performant, cost-effective, and simple way to s
 as the JupyterHub.
 Going forward, we will work with NCAR to obtain an <a class="reference external" href="https://www.openstoragenetwork.org/">Open Storage Network</a>
 pod which allows data to be accessible from both Google Cloud and NCAR’s computing system.</p>
+</section>
 <section id="pangeo-forge">
-<h4>Pangeo Forge<a class="headerlink" href="#pangeo-forge" title="Permalink to this headline">#</a></h4>
+<h3>Pangeo Forge<a class="headerlink" href="#pangeo-forge" title="Permalink to this headline">#</a></h3>
 <figure class="align-default" id="pangeo-forge-flow">
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/pangeo-forge/flow-charts/main/renders/architecture.png"><img alt="https://raw.githubusercontent.com/pangeo-forge/flow-charts/main/renders/architecture.png" src="https://raw.githubusercontent.com/pangeo-forge/flow-charts/main/renders/architecture.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Pangeo Forge high-level workflow. Diagram from <a class="github reference external" href="https://github.com/pangeo-forge/flow-charts">pangeo-forge/flow-charts</a></span><a class="headerlink" href="#pangeo-forge-flow" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Pangeo Forge high-level workflow. Diagram from <a class="github reference external" href="https://github.com/pangeo-forge/flow-charts">pangeo-forge/flow-charts</a></span><a class="headerlink" href="#pangeo-forge-flow" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>A central tool for the population and maintenance of the LEAP-Pangeo data catalog is
@@ -504,13 +503,12 @@ This synergistic relationship with be mutually beneficial to two NSF-sponsored p
 Using Pangeo Forge effectively will require LEAP scientists and data engineers to engage
 with the open-source development process around Pangeo Forge and related technologies.</p>
 </section>
-</section>
 <section id="the-hub">
 <span id="explanation-jupyterhub"></span><h3>The Hub<a class="headerlink" href="#the-hub" title="Permalink to this headline">#</a></h3>
 <figure class="align-default" id="jupyterlab-preview">
 <a class="reference internal image-reference" href="https://jupyter.org/assets/homepage/labpreview.webp"><img alt="https://jupyter.org/assets/homepage/labpreview.webp" src="https://jupyter.org/assets/homepage/labpreview.webp" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Screenshot from JupyterLab. From <a class="reference external" href="https://jupyter.org/">https://jupyter.org/</a></span><a class="headerlink" href="#jupyterlab-preview" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Screenshot from JupyterLab. From <a class="reference external" href="https://jupyter.org/">https://jupyter.org/</a></span><a class="headerlink" href="#jupyterlab-preview" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Jupyter Notebook / Lab has emerged as the standard tool for doing interactive data science.
@@ -518,7 +516,7 @@ Jupyter supports combining rich text, code, and generated outputs (e.g. figures)
 <figure class="align-default" id="jupyterhub-architecture">
 <a class="reference internal image-reference" href="https://jupyterhub.readthedocs.io/en/stable/_images/jhub-fluxogram.jpeg"><img alt="https://jupyterhub.readthedocs.io/en/stable/_images/jhub-fluxogram.jpeg" src="https://jupyterhub.readthedocs.io/en/stable/_images/jhub-fluxogram.jpeg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">JupyterHub architecture. From <a class="reference external" href="https://jupyterhub.readthedocs.io/">https://jupyterhub.readthedocs.io/</a></span><a class="headerlink" href="#jupyterhub-architecture" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">JupyterHub architecture. From <a class="reference external" href="https://jupyterhub.readthedocs.io/">https://jupyterhub.readthedocs.io/</a></span><a class="headerlink" href="#jupyterhub-architecture" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>JupyterHub is a multi-user Jupyter Notebook / Lab environment that runs on a server.
@@ -549,7 +547,7 @@ The <a class="reference internal" href="code_policy.html#explanation-code-policy
 <figure class="align-default" id="knowledge-graph">
 <a class="reference internal image-reference" href="../_images/LEAP_knowledge_graph.png"><img alt="../_images/LEAP_knowledge_graph.png" src="../_images/LEAP_knowledge_graph.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">LEAP Knowledge Graph</span><a class="headerlink" href="#knowledge-graph" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">LEAP Knowledge Graph</span><a class="headerlink" href="#knowledge-graph" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>By tracking the linked relationships between datasets, papers, code, models, and educational , we will generate a “knowledge graph”.
@@ -659,14 +657,9 @@ foundations in the climate data science community, strong uptake within NCAR, an
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-principles">Design Principles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-and-architecture">Design and Architecture</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data-library">The Data Library</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-catalog">Data Catalog</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage-service">Data Storage Service</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pangeo-forge">Pangeo Forge</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data-catalog">The Data Catalog</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage-service">Data Storage Service</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pangeo-forge">Pangeo Forge</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hub">The Hub</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-knowledge-graph">The Knowledge Graph</a></li>
 </ul>

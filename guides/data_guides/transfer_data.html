@@ -417,9 +417,9 @@ document.write(`
 <section id="ingesting-datasets-into-cloud-storage">
 <span id="guides-data-ingestion"></span><h2>Ingesting Datasets into Cloud Storage<a class="headerlink" href="#ingesting-datasets-into-cloud-storage" title="Permalink to this headline">#</a></h2>
 <p>If you do not find your dataset in the data catalog we can ingest it. Data ingestion in this context means that we have a programatic way to download and transform data into <a class="reference internal" href="../../reference/infrastructure.html#reference-arco"><span class="std std-ref">Analysis-Ready Cloud-Optimized (ARCO)</span></a> formats in a reproducible way, so that the dataset is available for the LEAP community and beyond (see <a class="reference internal" href="../../reference/infrastructure.html#reference-infrastructure-buckets"><span class="std std-ref">LEAP-Pangeo Cloud Storage Buckets</span></a> for who can access which resource).</p>
-<p>Based on the 3 <a class="reference internal" href="../../explanation/data_policy.html#explanation-data-policy-types"><span class="std std-ref">types of data</span></a> we host in the <a class="reference internal" href="../../explanation/architecture.html#explanation-architecture-data-library"><span class="std std-ref">The Data Library</span></a> there are different ways of ingesting data:</p>
+<p>Based on the 3 <a class="reference internal" href="../../explanation/data_policy.html#explanation-data-policy-types"><span class="std std-ref">types of data</span></a> we host in the <span class="xref myst"></span> there are different ways of ingesting data:</p>
 <ul class="simple">
-<li><p>Linking an existing (public, egress-free) ARCO dataset to the <a class="reference internal" href="../../explanation/architecture.html#explanation-architecture-catalog"><span class="std std-ref">Data Catalog</span></a></p></li>
+<li><p>Linking an existing (public, egress-free) ARCO dataset to the <a class="reference internal" href="../../explanation/architecture.html#explanation-architecture-catalog"><span class="std std-ref">The Data Catalog</span></a></p></li>
 <li><p>Ingesting and transforming data into an ARCO copy on <a class="reference internal" href="../../reference/infrastructure.html#reference-infrastructure-buckets"><span class="std std-ref">LEAP-Pangeo Cloud Storage Buckets</span></a>.</p></li>
 <li><p>(Work in Progress): Creating a virtual zarr store from existing publically hosted legacy format data (e.g. netcdf)</p></li>
 </ul>
@@ -444,7 +444,7 @@ document.write(`
 </pre></div>
 </div>
 <p>and set up a jupyter notbook (or a pure python script) that loads your data in as few xarray datasets as possible. For instance, if you have one dataset that consists of many files split in time, you should set your notebook up to read all the files using xarray into a single dataset, and then try to write out a small part of the dataset to a zarr store.</p>
-<p>Now <a class="reference internal" href="../../reference/infrastructure.html#reference-authentication-temp-token"><span class="std std-ref">generate a temporary token</span></a> and copy the resulting token into a plain text file <code class="docutils literal notranslate"><span class="pre">token.txt</span></code> in a convenient location on your <strong>local machine</strong>.</p>
+<p>Now <span class="xref myst">generate a temporary token</span> and copy the resulting token into a plain text file <code class="docutils literal notranslate"><span class="pre">token.txt</span></code> in a convenient location on your <strong>local machine</strong>.</p>
 <ul class="simple">
 <li><p>Now start a JupyterLab notebook and paste the following code into a cell:</p></li>
 </ul>
@@ -513,7 +513,7 @@ document.write(`
 <p><strong>Upload Prerequisites</strong></p>
 <p>Before we are able to set up authentication we need to make sure our HPC and local computer (required) are set up correctly.</p>
 <ul class="simple">
-<li><p>You have to be signed up to LEAP’s <a class="reference internal" href="../../reference/infrastructure.html#reference-authentication-google-groups"><span class="std std-ref">Google Groups</span></a>.</p></li>
+<li><p>You have to be signed up to LEAP’s <span class="xref myst">Google Groups</span>.</p></li>
 <li><p>Make sure to install the <a class="reference external" href="https://cloud.google.com/sdk/docs/install">Google Cloud SDK</a> in both your <span style="color:#9301B4">HPC environment</span>, and your local computer that can open a web browser (e.g. your laptop).</p></li>
 </ul>
 <p><strong>Steps</strong>
@@ -576,7 +576,7 @@ Steps executed on your <span style="color:#22B401">”local” computer (e.g. la
 <p>The below solutions fundamentally rely on the data being ‘pushed’ to the <a class="reference internal" href="../../reference/infrastructure.html#reference-infrastructure-buckets"><span class="std std-ref">LEAP-Pangeo Cloud Storage Buckets</span></a> which usually requires intervention on part of the <a class="reference internal" href="../../explanation/data_policy.html#explanation-data-policy-roles-data-expert"><span class="std std-ref">Data Expert</span></a>. This stands in contrast to e.g. data ingestion via <a class="reference internal" href="../../reference/infrastructure.html#reference-pangeo-forge"><span class="std std-ref">Pangeo-Forge</span></a> where the <a class="reference internal" href="../../explanation/data_policy.html#explanation-data-policy-roles-data-expert"><span class="std std-ref">Data Expert</span></a> only has to work on the recipe creation and the data is ‘pulled’ in a reproducible way. For more information see <a class="reference internal" href="../../explanation/data_policy.html#explanation-data-policy"><span class="std std-ref">LEAP-Pangeo Data Policy</span></a>.</p>
 <p>Fundamentally the ‘pushing’ of datasets relies on two components:</p>
 <ul class="simple">
-<li><p>Setting up permissions so that you can read/write to the <a class="reference internal" href="../../reference/infrastructure.html#reference-infrastructure-buckets"><span class="std std-ref">LEAP-Pangeo Cloud Storage Buckets</span></a> - Several methods to get permissions are described in <a class="reference internal" href="../../reference/infrastructure.html#reference-authentication"><span class="std std-ref">Access to LEAP-Pangeo resources without the JupyterHub</span></a>.</p></li>
+<li><p>Setting up permissions so that you can read/write to the <a class="reference internal" href="../../reference/infrastructure.html#reference-infrastructure-buckets"><span class="std std-ref">LEAP-Pangeo Cloud Storage Buckets</span></a> - Several methods to get permissions are described in <span class="xref myst"></span>.</p></li>
 <li><p>Initiating a data transfer from your ‘local’ machine (e.g. your laptop, a server, or HPC Cluster). You can check on some methods below.</p></li>
 </ul>
 </section>

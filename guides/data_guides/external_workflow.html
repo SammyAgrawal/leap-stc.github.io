@@ -395,6 +395,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-data">Moving Data</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-leap-pangeo-resources-without-the-jupyterhub">Access to LEAP-Pangeo resources without the JupyterHub</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporary-token">Temporary Token</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persistent-access-via-google-groups">Persistent Access via Google Groups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#service-account">Service Account</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -554,6 +560,36 @@ Rclone</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </section>
+<section id="access-to-leap-pangeo-resources-without-the-jupyterhub">
+<span id="guides-data-authentication"></span><h2>Access to LEAP-Pangeo resources without the JupyterHub<a class="headerlink" href="#access-to-leap-pangeo-resources-without-the-jupyterhub" title="Permalink to this headline">#</a></h2>
+<section id="temporary-token">
+<span id="guides-data-authentication-temp-token"></span><h3>Temporary Token<a class="headerlink" href="#temporary-token" title="Permalink to this headline">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This does not actually generate credentials that work outside the JupyterHub, Using the Google Groups is the recommended way of accessing the cloud buckets from outside the Hub.</p>
+</div>
+<p>You can generate a temporary (1 hour) token with read/write access as follows:</p>
+<ul class="simple">
+<li><p>Now start up a <a class="reference external" href="https://leap.2i2c.cloud">LEAP-Pangeo server</a> and open a terminal. Install the <a class="reference external" href="https://cloud.google.com/sdk/docs/install">Google Cloud SDK</a> using mamba</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>google-cloud-sdk
+</pre></div>
+</div>
+<p>Now you can generate a temporary token (valid for 1 hour) that allows you to upload data to the cloud.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gcloud<span class="w"> </span>auth<span class="w"> </span>print-access-token
+</pre></div>
+</div>
+<p>This will print a temporary token in the terminal. You can e.g. copy that to your clipboard.</p>
+</section>
+<section id="persistent-access-via-google-groups">
+<span id="guides-data-authentication-google-groups"></span><h3>Persistent Access via Google Groups<a class="headerlink" href="#persistent-access-via-google-groups" title="Permalink to this headline">#</a></h3>
+<p>We manage access rights through <a class="reference external" href="https://groups.google.com">Google Groups</a>. Please contact the <a class="reference internal" href="../../support.html#support-data-compute-team"><span class="std std-ref">Data and Computation Team</span></a> to get added to the appropriate group (a gmail address is required for this).</p>
+</section>
+<section id="service-account">
+<h3>Service Account<a class="headerlink" href="#service-account" title="Permalink to this headline">#</a></h3>
+<p>If you want more permanent access to resources, e.g. as part of a repositories CI using a service account, please reach out to the <a class="reference internal" href="../../support.html#support-data-compute-team"><span class="std std-ref">Data and Computation Team</span></a> to discuss options.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -627,6 +663,12 @@ Rclone</label><div class="sd-tab-content docutils">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-data">Reading and Writing Data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-data">Moving Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-leap-pangeo-resources-without-the-jupyterhub">Access to LEAP-Pangeo resources without the JupyterHub</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporary-token">Temporary Token</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persistent-access-via-google-groups">Persistent Access via Google Groups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#service-account">Service Account</a></li>
 </ul>
 </li>
 </ul>
