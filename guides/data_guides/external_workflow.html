@@ -63,8 +63,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'guides/data_guides/external_workflow';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Compute Guide" href="../compute_guide.html" />
-    <link rel="prev" title="Working with Cloud Data on the JupyterHub" href="data_jupyterhub.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -171,19 +169,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../explanation/infrastructure_policy.html">LEAP-Pangeo Infrastructure Policy</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Guides</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../code_guide.html">Code Guide</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../data_guide.html">Data Guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="transfer_data.html">Transfering Data into Cloud Storage</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data_guide.html">Data Guide</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="transfer_data.html">Transferring Data into Cloud Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_catalog.html">Working with the LEAP Data Catalog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_jupyterhub.html">Working with Cloud Data on the JupyterHub</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Working outside the LEAP JupyterHub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../compute_guide.html">Compute Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vm_access.html">Getting access to Cloud VMs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../team_guide.html">Guide for Data and Computation Team Members</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode_remoteSSH_guide.html">Using VSCode with the Hub</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -468,7 +466,7 @@ Rclone</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 <p>You can have multiple ‘remotes’ in this file for different cloud buckets.</p>
-<p>For the <a class="reference internal" href="../../reference/infrastructure.html#reference-infrastructrue-osn-pod"><span class="std std-ref">m2lines OSN Pod</span></a> use this remote definition:</p>
+<p>For the <span class="xref myst"></span> use this remote definition:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">osn</span><span class="p">]</span>
 <span class="nb">type</span> <span class="o">=</span> <span class="n">s3</span>
 <span class="n">provider</span> <span class="o">=</span> <span class="n">Ceph</span>
@@ -504,7 +502,7 @@ Fsspec</label><div class="sd-tab-content docutils">
 <span class="n">fs</span> <span class="o">=</span> <span class="n">fsspec</span><span class="o">.</span><span class="n">filesystem</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span> <span class="c1"># equivalent to s3fs.S3FileSystem()</span>
 </pre></div>
 </div>
-<p>For <strong>authenticated access</strong> you need to pass additional arguments. In this case (for the m2lines OSN pod) we pass a custom endpoint and an <a class="reference internal" href="#data-config-files"><span class="std std-ref">aws profile</span></a>:</p>
+<p>For <strong>authenticated access</strong> you need to pass additional arguments. In this case (for the m2lines OSN pod) we pass a custom endpoint and an <a class="reference internal" href="transfer_data.html#data-config-files"><span class="std std-ref">aws profile</span></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="n">fsspec</span><span class="o">.</span><span class="n">filesystem</span><span class="p">(</span>
     <span class="s1">&#39;s3&#39;</span><span class="p">,</span>
     <span class="n">profile</span><span class="o">=</span><span class="s1">&#39;&lt;the_profile_name_you_picked&gt;&#39;</span><span class="p">,</span>  <span class="c1">## This is the profile name you configured above.</span>
@@ -521,7 +519,7 @@ Fsspec</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
 Rclone</label><div class="sd-tab-content docutils">
-<p>To inspect a bucket you can use clone with the profile (‘remote’ in rclone terminology) set up <a class="reference internal" href="#data-config-files"><span class="std std-ref">above</span></a>:</p>
+<p>To inspect a bucket you can use clone with the profile (‘remote’ in rclone terminology) set up <a class="reference internal" href="transfer_data.html#data-config-files"><span class="std std-ref">above</span></a>:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rclone<span class="w"> </span>ls<span class="w"> </span>&lt;remote_name&gt;:bucket-name/funky-user
 </pre></div>
 </div>
@@ -538,7 +536,7 @@ Fsspec</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-5">
 Rclone</label><div class="sd-tab-content docutils">
-<p>You can move directories from a local computer to cloud storage with rclone (make sure you are properly <a class="reference internal" href="#data-config-files"><span class="std std-ref">authenticated</span></a>):</p>
+<p>You can move directories from a local computer to cloud storage with rclone (make sure you are properly <a class="reference internal" href="transfer_data.html#data-config-files"><span class="std std-ref">authenticated</span></a>):</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rclone<span class="w"> </span>copy<span class="w"> </span>path/to/local/dir/<span class="w"> </span>&lt;remote_name&gt;:&lt;bucket-name&gt;/funky-user/some-directory
 </pre></div>
 </div>
@@ -623,24 +621,6 @@ Rclone</label><div class="sd-tab-content docutils">
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="data_jupyterhub.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Working with Cloud Data on the JupyterHub</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../compute_guide.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Compute Guide</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>

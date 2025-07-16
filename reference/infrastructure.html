@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Membership" href="membership.html" />
-    <link rel="prev" title="FAQs" href="../guides/faq.html" />
+    <link rel="prev" title="Using VSCode with the Hub" href="../guides/vscode_remoteSSH_guide.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -174,16 +174,16 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../guides/code_guide.html">Code Guide</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../guides/data_guide.html">Data Guide</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/transfer_data.html">Transfering Data into Cloud Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/transfer_data.html">Transferring Data into Cloud Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/data_catalog.html">Working with the LEAP Data Catalog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/data_jupyterhub.html">Working with Cloud Data on the JupyterHub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/external_workflow.html">Working outside the LEAP JupyterHub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/compute_guide.html">Compute Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/vm_access.html">Getting access to Cloud VMs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/team_guide.html">Guide for Data and Computation Team Members</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/faq.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/vscode_remoteSSH_guide.html">Using VSCode with the Hub</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
@@ -405,7 +405,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-storage">Cloud Storage</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#m2lines-osn-pod">m2lines OSN Pod</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-osn-pod">LEAP OSN Pod</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#osn-pod-organization">OSN Pod Organization</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#credentials">Credentials</a></li>
 </ul>
@@ -418,7 +418,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zarr">Zarr</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pangeo-forge">Pangeo-Forge</a></li>
 </ul>
             </nav>
         </div>
@@ -558,10 +557,10 @@ However, these will disappear when your server shuts down.</p>
 </section>
 <section id="cloud-storage">
 <h2>Cloud Storage<a class="headerlink" href="#cloud-storage" title="Permalink to this headline">#</a></h2>
-<section id="m2lines-osn-pod">
-<span id="reference-infrastructrue-osn-pod"></span><h3>m2lines OSN Pod<a class="headerlink" href="#m2lines-osn-pod" title="Permalink to this headline">#</a></h3>
+<section id="leap-osn-pod">
+<span id="reference-infrastructure-osn-pod"></span><h3>LEAP OSN Pod<a class="headerlink" href="#leap-osn-pod" title="Permalink to this headline">#</a></h3>
 <section id="osn-pod-organization">
-<span id="reference-infrastructrue-osn-pod-organization"></span><h4>OSN Pod Organization<a class="headerlink" href="#osn-pod-organization" title="Permalink to this headline">#</a></h4>
+<span id="reference-infrastructure-osn-pod-organization"></span><h4>OSN Pod Organization<a class="headerlink" href="#osn-pod-organization" title="Permalink to this headline">#</a></h4>
 <p>The ~1PB storage on the OSN Pod can be customized into Projects and Buckets. Projects are used to give additional users access to the Coldfront Admin Console, whereas buckets are how storage is administered up on the Pod. A project can have multiple buckets.</p>
 <p>There are currently 3 principal Projects on the Pod:</p>
 <ul class="simple">
@@ -597,9 +596,10 @@ However, these will disappear when your server shuts down.</p>
 </ul>
 </li>
 </ul>
+<p id="reference-infrastructure-osn-pod-credentials">Data can be transferred from <code class="docutils literal notranslate"><span class="pre">leap-pangeo-inbox</span></code> to <code class="docutils literal notranslate"><span class="pre">leap-pangeo-manual</span></code> with <a class="reference external" href="https://github.com/leap-stc/data-management/actions/runs/11167922927/workflow">this rclone github action</a>.</p>
 </section>
 <section id="credentials">
-<span id="reference-infrastructrue-osn-pod-credentials"></span><h4>Credentials<a class="headerlink" href="#credentials" title="Permalink to this headline">#</a></h4>
+<h4>Credentials<a class="headerlink" href="#credentials" title="Permalink to this headline">#</a></h4>
 <div class="highlight-\{warning} notranslate"><div class="highlight"><pre><span></span>All OSN credentials are long lived and should be treated as such. Please do not share them publicly (e.g. in your notebook or a github repository) and when sharing with e.g. collaborators use an encrypted way of sharing (e.g. password manager).
 </pre></div>
 </div>
@@ -613,9 +613,9 @@ However, these will disappear when your server shuts down.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">gs://leap-scratch/</span></code> - Temporary Storage deleted after 7 days. Use this bucket for testing and storing large intermediate results. <a class="reference external" href="https://docs.2i2c.org/user/topics/data/cloud/#scratch-bucket">More info</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">gs://leap-persistent/</span></code> - Persistent Storage. Use this bucket for storing results you want to share with other members.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">gs://leap-persistent-ro/</span></code> - Persistent Storage with read-only access for most users. To upload data to this bucket you need to use <a class="reference internal" href="../guides/data_guides/transfer_data.html#hub-data-upload-hpc"><span class="std std-ref">this</span></a> method below.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gs://leap-persistent-ro/</span></code> - Persistent Storage with read-only access for most users.</p></li>
 </ul>
-<p>Files stored on each of those buckets can be accessed by any LEAP member, so be concious in the way you use these.</p>
+<p>Files stored on each of those buckets can be accessed by any LEAP member, so be conscious in the way you use these.</p>
 <ul class="simple">
 <li><p><strong>Do not put sensitive information (passwords, keys, personal data) into these buckets!</strong></p></li>
 <li><p><strong>When writing to buckets only ever write to your personal folder!</strong> Your personal folder is a combination of the bucketname and your github username (e.g. `gs://leap-persistent/funky-user/’).</p></li>
@@ -632,10 +632,6 @@ However, these will disappear when your server shuts down.</p>
 <h3>Zarr<a class="headerlink" href="#zarr" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://zarr.dev">zarr</a></p>
 </section>
-</section>
-<section id="pangeo-forge">
-<span id="reference-pangeo-forge"></span><h2>Pangeo-Forge<a class="headerlink" href="#pangeo-forge" title="Permalink to this headline">#</a></h2>
-<p>You can find more information about Pangeo-Forge <a class="reference external" href="https://pangeo-forge.readthedocs.io/en/latest/">here</a>.</p>
 </section>
 </section>
 
@@ -671,12 +667,12 @@ However, these will disappear when your server shuts down.</p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../guides/faq.html"
+       href="../guides/vscode_remoteSSH_guide.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">FAQs</p>
+        <p class="prev-next-title">Using VSCode with the Hub</p>
       </div>
     </a>
     <a class="right-next"
@@ -722,7 +718,7 @@ However, these will disappear when your server shuts down.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-storage">Cloud Storage</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#m2lines-osn-pod">m2lines OSN Pod</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-osn-pod">LEAP OSN Pod</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#osn-pod-organization">OSN Pod Organization</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#credentials">Credentials</a></li>
 </ul>
@@ -735,7 +731,6 @@ However, these will disappear when your server shuts down.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zarr">Zarr</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pangeo-forge">Pangeo-Forge</a></li>
 </ul>
   </nav></div>
 
