@@ -426,7 +426,7 @@ document.write(`
 <section id="ingesting-datasets-into-cloud-storage">
 <span id="guides-data-ingestion"></span><h2>Ingesting Datasets into Cloud Storage<a class="headerlink" href="#ingesting-datasets-into-cloud-storage" title="Permalink to this headline">#</a></h2>
 <p>If you do not find your dataset in the data catalog we can ingest it. Data ingestion in this context means that we have a programmatic way to download and transform data into <a class="reference internal" href="../../reference/infrastructure.html#reference-arco"><span class="std std-ref">Analysis-Ready Cloud-Optimized (ARCO)</span></a> formats in a reproducible way, so that the dataset is available for the LEAP community and beyond (see <a class="reference internal" href="../../reference/infrastructure.html#reference-infrastructure-buckets"><span class="std std-ref">LEAP-Pangeo Cloud Storage Buckets</span></a> for who can access which resource).</p>
-<p>Based on the 3 <a class="reference internal" href="../../explanation/data_policy.html#explanation-data-policy-types"><span class="std std-ref">types of data</span></a> we host in the <span class="xref myst"></span> there are different ways of ingesting data:</p>
+<p>Based on the 3 <a class="reference internal" href="../../explanation/data_policy.html#explanation-data-policy-types"><span class="std std-ref">types of data</span></a> we host in the <a class="reference internal" href="../../explanation/architecture.html#explanation-architecture-catalog"><span class="std std-ref">The Data Catalog</span></a> there are different ways of ingesting data:</p>
 <ul class="simple">
 <li><p>Linking an existing (public, egress-free) ARCO dataset to the <a class="reference internal" href="../../explanation/architecture.html#explanation-architecture-catalog"><span class="std std-ref">The Data Catalog</span></a></p></li>
 <li><p>Ingesting and transforming data into an ARCO copy on <a class="reference internal" href="../../reference/infrastructure.html#reference-infrastructure-buckets"><span class="std std-ref">LEAP-Pangeo Cloud Storage Buckets</span></a>.</p></li>
@@ -445,7 +445,7 @@ document.write(`
 <p>The below solutions fundamentally rely on the data being ‘pushed’ to the <a class="reference internal" href="../../reference/infrastructure.html#reference-infrastructure-buckets"><span class="std std-ref">LEAP-Pangeo Cloud Storage Buckets</span></a> which usually requires intervention on part of the <a class="reference internal" href="../../explanation/data_policy.html#explanation-data-policy-roles-data-expert"><span class="std std-ref">Data Expert</span></a>. This stands in contrast to e.g. data ingestion where the <a class="reference internal" href="../../explanation/data_policy.html#explanation-data-policy-roles-data-expert"><span class="std std-ref">Data Expert</span></a> only has to work on the recipe creation and the data is ‘pulled’ in a reproducible way. For more information see <a class="reference internal" href="../../explanation/data_policy.html#explanation-data-policy"><span class="std std-ref">LEAP-Pangeo Data Policy</span></a>.</p>
 <!-- Fundamentally the 'pushing' of datasets relies on two components:
 
-- Setting up permissions so that you can read/write to the [](reference.infrastructure.buckets) - Several methods to get permissions are described in [](reference.authentication).
+- Setting up permissions so that you can read/write to the [](reference.infrastructure.buckets) - Several methods to get permissions are described in [](guides.data.external.authentication).
 - Initiating a data transfer from your 'local' machine (e.g. your laptop, a server, or HPC Cluster). You can check on some methods below. -->
 </section>
 <section id="tools-for-cloud-access">
@@ -484,7 +484,7 @@ Fsspec</label><div class="sd-tab-content docutils">
 <span class="n">fs</span> <span class="o">=</span> <span class="n">fsspec</span><span class="o">.</span><span class="n">filesystem</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span> <span class="c1"># equivalent to s3fs.S3FileSystem()</span>
 </pre></div>
 </div>
-<p>For <strong>authenticated access</strong> you need to pass additional arguments. In this case (for the m2lines OSN pod) we pass a custom endpoint and an <a class="reference internal" href="external_workflow.html#data-config-files"><span class="std std-ref">aws profile</span></a>:</p>
+<p>For <strong>authenticated access</strong> you need to pass additional arguments. In this case (for the m2lines OSN pod) we pass a custom endpoint and an <a class="reference internal" href="external_workflow.html#guides-data-external-authentication"><span class="std std-ref">aws profile</span></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="n">fsspec</span><span class="o">.</span><span class="n">filesystem</span><span class="p">(</span>
     <span class="s1">&#39;s3&#39;</span><span class="p">,</span>
     <span class="n">profile</span><span class="o">=</span><span class="s1">&#39;&lt;the_profile_name_you_picked&gt;&#39;</span><span class="p">,</span>  <span class="c1">## This is the profile name you configured above.</span>
@@ -501,7 +501,7 @@ Fsspec</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 Rclone</label><div class="sd-tab-content docutils">
-<p>To inspect a bucket you can use clone with the profile (‘remote’ in rclone terminology) set up <a class="reference internal" href="external_workflow.html#data-config-files"><span class="std std-ref">above</span></a>:</p>
+<p>To inspect a bucket you can use clone with the profile (‘remote’ in rclone terminology) set up <a class="reference internal" href="external_workflow.html#guides-data-external-authentication-config-files"><span class="std std-ref">above</span></a>:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rclone<span class="w"> </span>ls<span class="w"> </span>&lt;remote_name&gt;:bucket-name/funky-user
 </pre></div>
 </div>
@@ -535,7 +535,7 @@ fsspec/gcsfs</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
 Rclone</label><div class="sd-tab-content docutils">
-<p>You can move directories from a local computer to cloud storage with rclone (make sure you are properly <a class="reference internal" href="external_workflow.html#data-config-files"><span class="std std-ref">authenticated</span></a>):</p>
+<p>You can move directories from a local computer to cloud storage with rclone - make sure you are properly <a class="reference internal" href="external_workflow.html#guides-data-external-authentication"><span class="std std-ref">authenticated</span></a>!</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rclone<span class="w"> </span>copy<span class="w"> </span>path/to/local/dir/<span class="w"> </span>&lt;remote_name&gt;:&lt;bucket-name&gt;/funky-user/some-directory
 </pre></div>
 </div>

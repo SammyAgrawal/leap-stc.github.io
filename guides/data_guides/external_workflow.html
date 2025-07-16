@@ -392,15 +392,12 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-for-cloud-access">Tools for Cloud Access</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-data">Moving Data</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-leap-pangeo-resources-without-the-jupyterhub">Access to LEAP-Pangeo resources without the JupyterHub</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-auth-config-files">Generating Auth Config Files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporary-token">Temporary Token</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persistent-access-via-google-groups">Persistent Access via Google Groups</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#service-account">Service Account</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-data">Moving Data</a></li>
 </ul>
             </nav>
         </div>
@@ -433,7 +430,9 @@ document.write(`
 </div>
 </section>
 <section id="authentication">
-<span id="data-config-files"></span><h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">#</a></h2>
+<span id="guides-data-external-authentication"></span><h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">#</a></h2>
+<section id="generating-auth-config-files">
+<span id="guides-data-external-authentication-config-files"></span><h3>Generating Auth Config Files<a class="headerlink" href="#generating-auth-config-files" title="Permalink to this headline">#</a></h3>
 <p>Unless a given cloud bucket allows anonymous access or is preauthenticated within your environment, you will need to authenticate with a key/secret pair. The <a class="reference internal" href="../../reference/infrastructure.html#reference-infrastructure-buckets"><span class="std std-ref">LEAP-Pangeo owned buckets</span></a> are pre-authenticated on the Hub but working with them externally requires configuation. <strong>Note:</strong> If you are accessing non-public cloud data from the JupyterHub (not published by LEAP), you will also have to follow this process.</p>
 <div class="warning admonition">
 <p class="admonition-title">Always Handle credentials with care!</p>
@@ -488,41 +487,7 @@ According to those issues we can only make the aws profiles (or <a class="refere
 <p class="admonition-title">Note</p>
 <p>You can find more great documentation, specifically on how to use OSN resources, in <a class="reference external" href="https://hytest-org.github.io/hytest/essential_reading/DataSources/Data_S3.html#credentialed-access">this section</a> of the <a class="reference external" href="https://hytest-org.github.io/hytest/doc/About.html#">HyTEST Docs</a></p>
 </div>
-<section id="moving-data">
-<h3>Moving Data<a class="headerlink" href="#moving-data" title="Permalink to this headline">#</a></h3>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-2">
-Fsspec</label><div class="sd-tab-content docutils">
-<p>🚧</p>
-</div>
-<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-3">
-Rclone</label><div class="sd-tab-content docutils">
-<p>You can move directories from a local computer to cloud storage with rclone (make sure you are properly <a class="reference internal" href="#data-config-files"><span class="std std-ref">authenticated</span></a>):</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rclone<span class="w"> </span>copy<span class="w"> </span>path/to/local/dir/<span class="w"> </span>&lt;remote_name&gt;:&lt;bucket-name&gt;/funky-user/some-directory
-</pre></div>
-</div>
-<p>You can also move data between cloud buckets using rclone</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rclone<span class="w"> </span>copy<span class="w"> </span><span class="se">\</span>
-<span class="w"> </span>&lt;remote_name_a&gt;:&lt;bucket-name&gt;/funky-user/some-directory<span class="se">\</span>
-<span class="w"> </span>&lt;remote_name_b&gt;:&lt;bucket-name&gt;/funky-user/some-directory
-</pre></div>
-</div>
-<div class="note admonition">
-<p class="admonition-title">Copying single files</p>
-<p>To copy single files with rclone use the <a class="reference external" href="https://rclone.org/commands/rclone_copyto/">copyto command</a> or copy the containing folder and use the <code class="docutils literal notranslate"><span class="pre">--include</span></code> or <code class="docutils literal notranslate"><span class="pre">--exclude</span></code> flags to select the file to copy.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Copying with rclone will stream the data from the source to your computer and back to the target, and thus transfer speed is likely limited by the internet connection of your local machine.</p>
-</div>
-</div>
-</div>
 </section>
-</section>
-<section id="access-to-leap-pangeo-resources-without-the-jupyterhub">
-<span id="guides-data-authentication"></span><h2>Access to LEAP-Pangeo resources without the JupyterHub<a class="headerlink" href="#access-to-leap-pangeo-resources-without-the-jupyterhub" title="Permalink to this headline">#</a></h2>
 <section id="temporary-token">
 <span id="guides-data-authentication-temp-token"></span><h3>Temporary Token<a class="headerlink" href="#temporary-token" title="Permalink to this headline">#</a></h3>
 <div class="admonition note">
@@ -542,14 +507,42 @@ Rclone</label><div class="sd-tab-content docutils">
 </div>
 <p>This will print a temporary token in the terminal. You can e.g. copy that to your clipboard.</p>
 </section>
-<section id="persistent-access-via-google-groups">
-<span id="guides-data-authentication-google-groups"></span><h3>Persistent Access via Google Groups<a class="headerlink" href="#persistent-access-via-google-groups" title="Permalink to this headline">#</a></h3>
-<p>We manage access rights through <a class="reference external" href="https://groups.google.com">Google Groups</a>. Please contact the <a class="reference internal" href="../../support.html#support-data-compute-team"><span class="std std-ref">Data and Computation Team</span></a> to get added to the appropriate group (a gmail address is required for this).</p>
-</section>
 <section id="service-account">
-<h3>Service Account<a class="headerlink" href="#service-account" title="Permalink to this headline">#</a></h3>
+<span id="guides-data-authentication-google-groups"></span><h3>Service Account<a class="headerlink" href="#service-account" title="Permalink to this headline">#</a></h3>
 <p>If you want more permanent access to resources, e.g. as part of a repositories CI using a service account, please reach out to the <a class="reference internal" href="../../support.html#support-data-compute-team"><span class="std std-ref">Data and Computation Team</span></a> to discuss options.</p>
 </section>
+</section>
+<section id="moving-data">
+<h2>Moving Data<a class="headerlink" href="#moving-data" title="Permalink to this headline">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Fsspec</label><div class="sd-tab-content docutils">
+<p>🚧</p>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Rclone</label><div class="sd-tab-content docutils">
+<p>You can move directories from a local computer to cloud storage with rclone (make sure you are properly authenticated!):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rclone<span class="w"> </span>copy<span class="w"> </span>path/to/local/dir/<span class="w"> </span>&lt;remote_name&gt;:&lt;bucket-name&gt;/funky-user/some-directory
+</pre></div>
+</div>
+<p>You can also move data between cloud buckets using rclone</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rclone<span class="w"> </span>copy<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>&lt;remote_name_a&gt;:&lt;bucket-name&gt;/funky-user/some-directory<span class="se">\</span>
+<span class="w"> </span>&lt;remote_name_b&gt;:&lt;bucket-name&gt;/funky-user/some-directory
+</pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Copying single files</p>
+<p>To copy single files with rclone use the <a class="reference external" href="https://rclone.org/commands/rclone_copyto/">copyto command</a> or copy the containing folder and use the <code class="docutils literal notranslate"><span class="pre">--include</span></code> or <code class="docutils literal notranslate"><span class="pre">--exclude</span></code> flags to select the file to copy.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Copying with rclone will stream the data from the source to your computer and back to the target, and thus transfer speed is likely limited by the internet connection of your local machine.</p>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -622,15 +615,12 @@ Rclone</label><div class="sd-tab-content docutils">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-for-cloud-access">Tools for Cloud Access</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-data">Moving Data</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-leap-pangeo-resources-without-the-jupyterhub">Access to LEAP-Pangeo resources without the JupyterHub</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-auth-config-files">Generating Auth Config Files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporary-token">Temporary Token</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persistent-access-via-google-groups">Persistent Access via Google Groups</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#service-account">Service Account</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-data">Moving Data</a></li>
 </ul>
   </nav></div>
 

@@ -530,10 +530,8 @@ A complete list of all packages installed in this environment is located at:</p>
 </pre></div>
 </div>
 </div>
-<p>You can then use that string with the <span class="xref myst">custom images</span> to reproduce your work with exactly the same environment.</p>
+<p>You can then use that string with the <a class="reference internal" href="#reference-infrastructure-hub-software-env"><span class="std std-ref">custom images</span></a> to reproduce your work with exactly the same environment.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-(reference.infrastructure.hub.image.custom)=
-
 #### Custom Images
 
 If you select the `Image &gt; Other...` Option during [server login](hub:server:login) you can paste an arbitrary reference in the form of `docker_registry/organization/image_name:image_version`. As an example we can get the `2023.05.08` version of the pangeo tensorflow notebook by pasting `quay.io/pangeo/ml-notebook:2023.05.08`. This reference must point to an actual image built somewhere. To learn how to build custom docker images for the Jupyterhub, check out our [compute guide](guides.compute.image.custom).
@@ -545,16 +543,12 @@ If you select the `Image &gt; Other...` Option during [server login](hub:server:
 You can install additional packages using `pip` and `conda`.
 However, these will disappear when your server shuts down.
 
-For a more permanent solution we recommend building project specific dockerfiles and using those as [custom images](reference.infrastructure.hub.image.custom).
-
-## Cloud Storage
+For a more permanent solution we recommend building project specific dockerfiles and using those as custom images.
 
 (reference.infrastructure.osn_pod)=
-
-### LEAP OSN Pod
+## Cloud Storage
 
 (reference.infrastructure.osn_pod.organization)=
-
 #### OSN Pod Organization
 
 The ~1PB storage on the OSN Pod can be customized into Projects and Buckets. Projects are used to give additional users access to the Coldfront Admin Console, whereas buckets are how storage is administered up on the Pod. A project can have multiple buckets.
@@ -576,7 +570,6 @@ There are currently 3 principal Projects on the Pod:
     - ... various project buckets
 
 (reference.infrastructure.osn_pod.credentials)=
-
 Data can be transferred from `leap-pangeo-inbox` to `leap-pangeo-manual` with [this rclone github action](https://github.com/leap-stc/data-management/actions/runs/11167922927/workflow).
 
 #### Credentials
@@ -591,7 +584,7 @@ All OSN credentials are long lived and should be treated as such. Please do not 
 </section>
 <section id="leap-pangeo-cloud-storage-buckets">
 <span id="reference-infrastructure-buckets"></span><h2>LEAP-Pangeo Cloud Storage Buckets<a class="headerlink" href="#leap-pangeo-cloud-storage-buckets" title="Permalink to this headline">#</a></h2>
-<p>LEAP-Pangeo provides users two cloud buckets to store data. Your <a class="reference internal" href="#reference-infrastructure-hub-server"><span class="std std-ref">Server</span></a> is automatically authenticated to read from any of these buckets but write access might differ (see below). See <span class="xref myst"></span> for details on how to access buckets from ‘outside’ the JupyterHub.</p>
+<p>LEAP-Pangeo provides users two cloud buckets to store data. Your <a class="reference internal" href="#reference-infrastructure-hub-server"><span class="std std-ref">Server</span></a> is automatically authenticated to read from any of these buckets but write access might differ (see below). See <a class="reference internal" href="../guides/data_guides/external_workflow.html#guides-data-external-authentication"><span class="std std-ref">Authentication</span></a> for details on how to access buckets from ‘outside’ the JupyterHub.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">gs://leap-scratch/</span></code> - Temporary Storage deleted after 7 days. Use this bucket for testing and storing large intermediate results. <a class="reference external" href="https://docs.2i2c.org/user/topics/data/cloud/#scratch-bucket">More info</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">gs://leap-persistent/</span></code> - Persistent Storage. Use this bucket for storing results you want to share with other members.</p></li>

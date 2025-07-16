@@ -422,7 +422,7 @@ document.write(`
 <section id="creating-custom-docker-images">
 <span id="guides-compute-image-custom"></span><h2>Creating Custom Docker Images<a class="headerlink" href="#creating-custom-docker-images" title="Permalink to this headline">#</a></h2>
 <p>The LEAP-Pangeo Jupyterhub provides a selection of <a class="reference internal" href="../reference/infrastructure.html#reference-infrastructure-hub-software-env"><span class="std std-ref">software environments</span></a> that enable many workflows using the Pangeo Software stack, but often users will need to install custom dependencies. Installing dependencies every time you start a server is usually fine for testing, but can become cumbersome over the long run and makes reproducibility much harder.</p>
-<p>The solution to this is to build a custom docker image, publish it on a registry, and then you will be able to <span class="xref myst">simply paste a string into the <code class="docutils literal notranslate"><span class="pre">Image</span></code> selection box upon server startup</span>.</p>
+<p>The solution to this is to build a custom docker image, publish it on a registry, and then you will be able to simply paste a string into the <code class="docutils literal notranslate"><span class="pre">Image</span></code> selection box upon server startup.</p>
 <p>Generally you have two options to generate images:</p>
 <ul class="simple">
 <li><p>Inherit from a community maintained existing image and add additional dependencies (<strong>recommended</strong>)</p></li>
