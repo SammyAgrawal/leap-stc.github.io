@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Getting access to Cloud VMs" href="vm_access.html" />
-    <link rel="prev" title="Working with Cloud Data on the JupyterHub" href="data_guides/data_jupyterhub.html" />
+    <link rel="prev" title="Working outside the LEAP JupyterHub" href="data_guides/external_workflow.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -177,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="data_guides/transfer_data.html">Transferring Data into Cloud Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_guides/data_catalog.html">Working with the LEAP Data Catalog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_guides/data_jupyterhub.html">Working with Cloud Data on the JupyterHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_guides/external_workflow.html">Working outside the LEAP JupyterHub</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Compute Guide</a></li>
@@ -421,7 +422,7 @@ document.write(`
 <section id="creating-custom-docker-images">
 <span id="guides-compute-image-custom"></span><h2>Creating Custom Docker Images<a class="headerlink" href="#creating-custom-docker-images" title="Permalink to this headline">#</a></h2>
 <p>The LEAP-Pangeo Jupyterhub provides a selection of <a class="reference internal" href="../reference/infrastructure.html#reference-infrastructure-hub-software-env"><span class="std std-ref">software environments</span></a> that enable many workflows using the Pangeo Software stack, but often users will need to install custom dependencies. Installing dependencies every time you start a server is usually fine for testing, but can become cumbersome over the long run and makes reproducibility much harder.</p>
-<p>The solution to this is to build a custom docker image, publish it on a registry, and then you will be able to <a class="reference internal" href="../reference/infrastructure.html#reference-infrastructure-hub-image-custom"><span class="std std-ref">simply paste a string into the <code class="docutils literal notranslate"><span class="pre">Image</span></code> selection box upon server startup</span></a>.</p>
+<p>The solution to this is to build a custom docker image, publish it on a registry, and then you will be able to <span class="xref myst">simply paste a string into the <code class="docutils literal notranslate"><span class="pre">Image</span></code> selection box upon server startup</span>.</p>
 <p>Generally you have two options to generate images:</p>
 <ul class="simple">
 <li><p>Inherit from a community maintained existing image and add additional dependencies (<strong>recommended</strong>)</p></li>
@@ -524,12 +525,12 @@ can you please:
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="data_guides/data_jupyterhub.html"
+       href="data_guides/external_workflow.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Working with Cloud Data on the JupyterHub</p>
+        <p class="prev-next-title">Working outside the LEAP JupyterHub</p>
       </div>
     </a>
     <a class="right-next"

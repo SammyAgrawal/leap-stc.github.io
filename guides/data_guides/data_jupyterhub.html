@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'guides/data_guides/data_jupyterhub';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Compute Guide" href="../compute_guide.html" />
+    <link rel="next" title="Working outside the LEAP JupyterHub" href="external_workflow.html" />
     <link rel="prev" title="Working with the LEAP Data Catalog" href="data_catalog.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -177,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="transfer_data.html">Transferring Data into Cloud Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_catalog.html">Working with the LEAP Data Catalog</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Working with Cloud Data on the JupyterHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_workflow.html">Working outside the LEAP JupyterHub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../compute_guide.html">Compute Guide</a></li>
@@ -390,10 +391,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-xarray-datasets-to-cloud-storage-as-zarr">Writing Xarray Datasets to Cloud Storage as Zarr</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-to-gcs-google-cloud-storage">Write to GCS (Google Cloud Storage)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#write-to-osn-open-storage-network">Write to OSN - Open Storage Network</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-to-osn-open-storage-network">Write to OSN - Open Storage Network</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-delete-data-from-cloud-buckets">How to delete data from cloud buckets</a></li>
 </ul>
 </li>
@@ -414,40 +412,44 @@ document.write(`
 <section id="writing-xarray-datasets-to-cloud-storage-as-zarr">
 <h2>Writing Xarray Datasets to Cloud Storage as Zarr<a class="headerlink" href="#writing-xarray-datasets-to-cloud-storage-as-zarr" title="Permalink to this headline">#</a></h2>
 <p>Below are a few snippets on how to write your Xarray Datasets to cloud storage.</p>
-<div class="highlight-\{note} notranslate"><div class="highlight"><pre><span></span>Writing to Zarr is the recommended way to save Xarray Datasets. It is very performant and scales incredibly well. That said, there are a few gotchas to look out for. Recently, [Zarr Python V3 was released](https://zarr.dev/blog/zarr-python-3-release/). Depending on which `zarr-python` version you have installed on the hub, writing can look slightly differant! As of April 2025, the pypi/conda version of Zarr python is 3+. The Python library `zarr-python` can read and write either version 2 or 3. The pangeo community image that is used for the LEAP/2i2c Jupyter-hub now comes with Zarr V3.
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Writing to Zarr is the recommended way to save Xarray Datasets. It is very performant and scales incredibly well. That said, there are a few gotchas to look out for. Recently, <a class="reference external" href="https://zarr.dev/blog/zarr-python-3-release/">Zarr Python V3 was released</a>. Depending on which <code class="docutils literal notranslate"><span class="pre">zarr-python</span></code> version you have installed on the hub, writing can look slightly differant! As of April 2025, the pypi/conda version of Zarr python is 3+. The Python library <code class="docutils literal notranslate"><span class="pre">zarr-python</span></code> can read and write either version 2 or 3. The pangeo community image that is used for the LEAP/2i2c Jupyter-hub now comes with Zarr V3.</p>
+<p>You can check the version with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">zarr</span>
 
-You can check the version with
-
-```python
-import zarr
-
-print(zarr.__version__)
-```
-
+<span class="nb">print</span><span class="p">(</span><span class="n">zarr</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 </pre></div>
 </div>
-<section id="write-to-gcs-google-cloud-storage">
-<span id="hub-data-read-write"></span><h3>Write to GCS (Google Cloud Storage)<a class="headerlink" href="#write-to-gcs-google-cloud-storage" title="Permalink to this headline">#</a></h3>
-<p>We do not recommend uploading large files (e.g. netcdf) directly to the bucket. Instead we recommend to write data as ARCO (Analysis-Ready Cloud-Optimized) formats like <a class="reference external" href="https://zarr.dev">zarr</a>(for n-dimensional arrays) and <a class="reference external" href="https://parquet.apache.org">parquet</a>(for tabular data) (read more <a class="reference external" href="https://ieeexplore.ieee.org/document/9354557">here</a> why we recommend ARCO formats).</p>
-<p>Working with Xarray Datasets on the LEAP 2i2c JupyterHub makes it incredibly easy to switch storage formats when reading/writing data. You can write to a GCS bucket with Xarray with a single line of code as the authentication should be ~automagically~ configured.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+(hub.data.read_write)=
 
-<span class="c1"># Note: We are using an Xarray tutorial dataset in this example</span>
-<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">tutorial</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;air_temperature&quot;</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">{})</span>
-<span class="n">ds_processed</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>  <span class="c1"># sample modifications to data</span>
-<span class="c1"># Note: This example writes to the `leap-scratch`, but you could also write to the leap-persistent bucket.</span>
-<span class="c1"># 👀 make sure to prepend `gs://` to the path or xarray will interpret this as a local path</span>
+### Write to GCS (Google Cloud Storage)
 
-<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;gs://leap-scratch/&lt;YOUR_USERNAME&gt;/&lt;DATASET_NAME&gt;.zarr&quot;</span>
+We do not recommend uploading large files (e.g. netcdf) directly to the bucket. Instead we recommend to write data as ARCO (Analysis-Ready Cloud-Optimized) formats like [zarr](https://zarr.dev)(for n-dimensional arrays) and [parquet](https://parquet.apache.org)(for tabular data) (read more [here](https://ieeexplore.ieee.org/document/9354557) why we recommend ARCO formats).
 
-<span class="c1"># Note: With zarr-python v3, you can write either Zarr python v2 or v3 by speciying the `zarr_format` as 2 or 3.</span>
-<span class="n">zarr_format</span> <span class="o">=</span> <span class="mi">3</span>
+Working with Xarray Datasets on the LEAP 2i2c JupyterHub makes it incredibly easy to switch storage formats when reading/writing data. You can write to a GCS bucket with Xarray with a single line of code as the authentication should be ~automagically~ configured.
 
-<span class="c1"># Note: Zarr python V3 currently does not support consolidated metadata.</span>
-<span class="n">ds_processed</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">zarr_format</span><span class="o">=</span><span class="n">zarr_format</span><span class="p">,</span> <span class="n">consolidated</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+```python
+import xarray as xr
 
-<span class="c1"># You can then open that Zarr store with Xarray with:</span>
-<span class="c1"># roundtrip = xr.open_zarr(path, chunks={}, consolidated=False)</span>
+# Note: We are using an Xarray tutorial dataset in this example
+ds = xr.tutorial.open_dataset(&quot;air_temperature&quot;, chunks={})
+ds_processed = ds.mean(...).resample(...)  # sample modifications to data
+# Note: This example writes to the `leap-scratch`, but you could also write to the leap-persistent bucket.
+# 👀 make sure to prepend `gs://` to the path or xarray will interpret this as a local path
+
+path = &quot;gs://leap-scratch/&lt;YOUR_USERNAME&gt;/&lt;DATASET_NAME&gt;.zarr&quot;
+
+# Note: With zarr-python v3, you can write either Zarr python v2 or v3 by speciying the `zarr_format` as 2 or 3.
+zarr_format = 3
+
+# Note: Zarr python V3 currently does not support consolidated metadata.
+ds_processed.to_zarr(path, zarr_format=zarr_format, consolidated=False)
+
+# You can then open that Zarr store with Xarray with:
+# roundtrip = xr.open_zarr(path, chunks={}, consolidated=False)
 </pre></div>
 </div>
 <p>You can read it back into an xarray dataset with this snippet:</p>
@@ -459,8 +461,9 @@ print(zarr.__version__)
 </pre></div>
 </div>
 <p>… and you can give this to any other registered LEAP user and they can load it exactly like you can!</p>
-<div class="highlight-\{note} notranslate"><div class="highlight"><pre><span></span>Note that providing the url starting with `gs://...` is assumes that you have appropriate credentials set up in your environment to read/write to that bucket. On the hub these are already set up for you to work with the [](reference.infrastructure.buckets), but if you are trying to interact with non-public buckets you need to authenticate yourself. Check out [](data.config-files) to see an example how to do that.
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that providing the url starting with <code class="docutils literal notranslate"><span class="pre">gs://...</span></code> is assumes that you have appropriate credentials set up in your environment to read/write to that bucket. On the hub these are already set up for you to work with the <a class="reference internal" href="../../reference/infrastructure.html#reference-infrastructure-buckets"><span class="std std-ref">LEAP-Pangeo Cloud Storage Buckets</span></a>, but if you are trying to interact with non-public buckets you need to authenticate yourself. Check out <a class="reference internal" href="external_workflow.html#data-config-files"><span class="std std-ref">Authentication</span></a> to see an example how to do that.</p>
 </div>
 <p>Another example of a roundtrip save and load with numpy:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -489,12 +492,12 @@ print(zarr.__version__)
 <div><p>Make sure to specify <code class="docutils literal notranslate"><span class="pre">mode='rb'</span></code> or <code class="docutils literal notranslate"><span class="pre">move='wb'</span></code> for binary files.</p>
 </div></blockquote>
 <section id="write-to-osn-open-storage-network">
-<h4>Write to OSN - Open Storage Network<a class="headerlink" href="#write-to-osn-open-storage-network" title="Permalink to this headline">#</a></h4>
+<h3>Write to OSN - Open Storage Network<a class="headerlink" href="#write-to-osn-open-storage-network" title="Permalink to this headline">#</a></h3>
 <p>LEAP has an allocation of storage on an OSN pod. OSN allows s3-like cloud storage that has no egress fees. This means that you can share data with the public or outside colaborators without any cost per request. Please contact the data-and-compute team on slack if you feel like this would fit your data use case and you want to store data on OSN.</p>
 <p>In the example below, we have to provide a bit more authentication to write to OSN.</p>
-<div class="highlight-\{admonition} notranslate"><div class="highlight"><pre><span></span>:class: tip, dropdown
-This section is a work in progress and may change. Generally leap users should default to writing to GCS.
-</pre></div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Note on OSN</p>
+<p>This section is a work in progress and may change. Generally leap users should default to writing to GCS.</p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">fsspec</span>
@@ -530,11 +533,11 @@ This section is a work in progress and may change. Generally leap users should d
 </pre></div>
 </div>
 </section>
-</section>
 <section id="how-to-delete-data-from-cloud-buckets">
 <h3>How to delete data from cloud buckets<a class="headerlink" href="#how-to-delete-data-from-cloud-buckets" title="Permalink to this headline">#</a></h3>
-<div class="highlight-\{warning} notranslate"><div class="highlight"><pre><span></span>Depending on which cloud bucket you are working, make sure to double check which files you are deleting by [inspecting the contents](hub.data.list) and only working in a subdirectory with your username (e.g. `gs://&lt;leap-bucket&gt;/&lt;your-username&gt;/some/project/structure`.
-</pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Depending on which cloud bucket you are working, make sure to double check which files you are deleting by <a class="reference internal" href="transfer_data.html#hub-data-list"><span class="std std-ref">inspecting the contents</span></a> and only working in a subdirectory with your username (e.g. <code class="docutils literal notranslate"><span class="pre">gs://&lt;leap-bucket&gt;/&lt;your-username&gt;/some/project/structure</span></code>.</p>
 </div>
 <p>You can remove single files by using a gcsfs/fsspec filessytem as above</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gcsfs</span>
@@ -592,11 +595,11 @@ This section is a work in progress and may change. Generally leap users should d
       </div>
     </a>
     <a class="right-next"
-       href="../compute_guide.html"
+       href="external_workflow.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Compute Guide</p>
+        <p class="prev-next-title">Working outside the LEAP JupyterHub</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -619,10 +622,7 @@ This section is a work in progress and may change. Generally leap users should d
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-xarray-datasets-to-cloud-storage-as-zarr">Writing Xarray Datasets to Cloud Storage as Zarr</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-to-gcs-google-cloud-storage">Write to GCS (Google Cloud Storage)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#write-to-osn-open-storage-network">Write to OSN - Open Storage Network</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-to-osn-open-storage-network">Write to OSN - Open Storage Network</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-delete-data-from-cloud-buckets">How to delete data from cloud buckets</a></li>
 </ul>
 </li>

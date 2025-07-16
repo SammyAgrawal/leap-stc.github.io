@@ -177,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/transfer_data.html">Transferring Data into Cloud Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/data_catalog.html">Working with the LEAP Data Catalog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/data_jupyterhub.html">Working with Cloud Data on the JupyterHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/data_guides/external_workflow.html">Working outside the LEAP JupyterHub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/compute_guide.html">Compute Guide</a></li>
@@ -420,17 +421,17 @@ document.write(`
 <section id="types-of-data-used-at-leap">
 <span id="explanation-data-policy-types"></span><h2>Types of Data Used at LEAP<a class="headerlink" href="#types-of-data-used-at-leap" title="Permalink to this headline">#</a></h2>
 <p>Within the LEAP project we distinguish between several different types of data mostly based on whether the data was used or produced at LEAP and if the data is already accessible in <abbr>ARCO</abbr> formats in the cloud.</p>
-<div class="highlight-\{admonition} notranslate"><div class="highlight"><pre><span></span>:class: dropdown
-Data that has been created or modified by LEAP researchers. We currently do not provide any way of ensuring that data is archived, and users should never rely on LEAP-Pangeo resources as the only replicate of valuable data (see also [](guides.data.ingestion)).
-</pre></div>
+<div class="dropdown admonition">
+<p class="admonition-title">LEAP produced</p>
+<p>Data that has been created or modified by LEAP researchers. We currently do not provide any way of ensuring that data is archived, and users should never rely on LEAP-Pangeo resources as the only replicate of valuable data (see also <a class="reference internal" href="../guides/data_guides/transfer_data.html#guides-data-ingestion"><span class="std std-ref">Ingesting Datasets into Cloud Storage</span></a>).</p>
 </div>
-<div class="highlight-\{admonition} notranslate"><div class="highlight"><pre><span></span>:class: dropdown
-Data that is already publically available but has been ingested into cloud storage in {abbr}`ARCO` formats. The actual data/metadata has not been modified from the original.
-</pre></div>
+<div class="dropdown admonition">
+<p class="admonition-title">LEAP ingested</p>
+<p>Data that is already publically available but has been ingested into cloud storage in <abbr>ARCO</abbr> formats. The actual data/metadata has not been modified from the original.</p>
 </div>
-<div class="highlight-\{admonition} notranslate"><div class="highlight"><pre><span></span>:class: dropdown
-Data that is already available in {abbr}`ARCO` formats in publically accessible object storage. Adding this data to the LEAP-Pangeo Catalog enables us to visualize it with the Data Viewer, and collect all datasets of importance in one single location, but none of the data itself is modified.
-</pre></div>
+<div class="dropdown admonition">
+<p class="admonition-title">LEAP curated</p>
+<p>Data that is already available in <abbr>ARCO</abbr> formats in publically accessible object storage. Adding this data to the LEAP-Pangeo Catalog enables us to visualize it with the Data Viewer, and collect all datasets of importance in one single location, but none of the data itself is modified.</p>
 </div>
 </section>
 <section id="roles">
